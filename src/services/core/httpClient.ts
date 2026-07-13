@@ -4,10 +4,11 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from "axios";
+import { getBaseUrl } from "@/config/env";
 
 export const ENABLE_API_LOG = import.meta.env.DEV;
 
-const BASE_URL = "https://uat.shinhanfinance.net/api_ishin_sit2";
+const BASE_URL = getBaseUrl();
 
 // Header tĩnh — đã test work bằng curl thật (Postman confirmed)
 const STATIC_HEADERS: Record<string, string> = {

@@ -17,7 +17,11 @@
   "scripts": {
     "login": "zmp login",
     "start": "zmp start",
-    "deploy": "zmp deploy"
+    "deploy": "zmp deploy",
+    "start:sit": "cross-env VITE_APP_ENV=sit zmp start",
+    "start:uat": "cross-env VITE_APP_ENV=uat zmp start",
+    "start:staging": "cross-env VITE_APP_ENV=staging zmp start",
+    "start:prod": "cross-env VITE_APP_ENV=prod zmp start"
   },
   "dependencies": {
     "axios": "^1.18.1",
