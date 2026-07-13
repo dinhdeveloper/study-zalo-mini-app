@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useParams } from "zmp-ui";
 import { Box, Text, Header, Icon, Page } from "zmp-ui";
-
+import bg from "@/static/bg.svg";
 import { useLoanProductDetail } from "@/hooks/useLoanProductDetail";
 
 function LoanProductDetailPage() {
@@ -14,8 +14,11 @@ function LoanProductDetailPage() {
   }, [id]);
 
   return (
-    <Page className="flex h-full min-h-0 flex-col overflow-auto bg-gray-50">
-      <Header title="Chi tiết sản phẩm" />
+    <Page
+      className="flex flex-col py-10 min-h-screen space-y-6 bg-cover bg-center bg-no-repeat bg-white dark:bg-black"
+      style={{ backgroundImage: `url(${bg})` }}
+    >
+      <Header title="Chi tiết sản phẩm" className="overflow-hidden bg-transparent"/>
 
       <div className="px-4 pt-5 space-y-4">
         {details.map((item) => (
