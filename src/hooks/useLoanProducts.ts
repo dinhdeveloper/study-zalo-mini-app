@@ -36,29 +36,43 @@ export function useListQuestionExLoan() {
     (idLoan: string) => {
       callApi<ExpressLoanData>({
         endpoint: LoanProductEndpoints.getList(idLoan),
-
         onSuccess: (data) => {
-          setQuestions(data.questions);
+          setQuestions(Array.isArray(data?.questions) ? data.questions : []);
         },
-
         onFailure: (failure) => {
           showError(failure?.message ?? "Có lỗi xảy ra");
+          setQuestions([]);
         },
-
         onError: (err) => {
           showError("Có vẻ như bạn đang gặp trở ngại trong kết nối");
           console.error(err);
+          setQuestions([]);
         },
-
         isShowLoading: true,
       });
     },
     [showError]
   );
 
+  // Xóa answer của question theo questionType, và của tất cả question phía sau nó
+  const editFromQuestionType = useCallback((questionType: string) => {
+    setQuestions((prev) => {
+      const index = prev.findIndex((q) => q.questionType === questionType);
+      if (index === -1) return prev;
+
+      return prev.map((q, i) => {
+        if (i < index) return q; // giữ nguyên các câu trước
+        // xóa answer của chính câu này và các câu sau
+        const { answer, ...rest } = q;
+        return { ...rest } as ExpressLoanQuestion;
+      });
+    });
+  }, []);
+
   return {
     questions,
     fetchListQuestion,
+    editFromQuestionType,
   };
 }
 
