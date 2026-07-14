@@ -8,7 +8,7 @@ import {
 } from "zmp-ui";
 import { AppProps } from "zmp-ui/app";
 
-import HomePage from "@/pages/index";
+import ChatbotPage from "@/pages/chatbot_loan";
 import LoanProductDetailPage from "@/pages/loan-product-detail";
 import GlobalLoading from "@/components/global-loading";
 
@@ -19,7 +19,7 @@ const Layout = () => {
         <ZMPRouter>
           <GlobalLoading />
           <AnimationRoutes>
-            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/" element={<ChatbotPage />}></Route>
             <Route path="/loan-product/:id" element={<LoanProductDetailPage />}></Route>
           </AnimationRoutes>
         </ZMPRouter>

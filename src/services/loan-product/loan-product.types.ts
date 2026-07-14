@@ -30,3 +30,17 @@ export interface LoanProductDetail {
 
 // data trả về là mảng
 export type LoanProductDetailListData = LoanProductDetail[];
+
+export interface Answer {
+  questionType: string;
+  value: string;
+}
+
+export interface Question {
+  questionID: number;
+  content: string;
+  questionType: string;
+  nextQuestionType?: string;
+  answer?: Answer;
+  enable?: boolean
+}

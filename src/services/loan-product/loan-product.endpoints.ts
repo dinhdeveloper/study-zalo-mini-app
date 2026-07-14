@@ -10,4 +10,9 @@ export const LoanProductEndpoints = {
     method: Method.GET,
     path: `/api/loan_products/product/${id}`,
   }),
+
+  getList: (id: string): ApiEndpoint => ({
+    method: Method.GET,
+    path: `/api/loan_products/loan/${id}`,
+  }),
 } as const;
